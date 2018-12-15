@@ -15,6 +15,28 @@ var role = "";
 var startDate = "";
 var monthlyRate = 0;
 
+database.ref().on("child_added", function(snapshot) {
+    var sv = snapshot.val();
+
+    // Create new row.
+    var newRow = $("<tr>");
+    
+    // Create new TDs with appropriate values.
+    var nameTD = $("<td>").text(sv.name);
+    var roleTD = $("<td>").text(sv.role);
+    var startTD = $("<td>").text(sv.startDate);
+    var monthsWorkedTD = $("<td>").text("Placeholder");
+    var monthlyRateTD = $("<td>").text(sv.monthlyRate);
+    var totalBilledTD = $("<td>").text("Placeholder");
+    
+    // Append td values to row.
+    newRow.append(nameTD, roleTD, startTD, monthsWorkedTD, monthlyRateTD, totalBilledTD);
+    
+    // Append new row to existing table "tbody".
+    $("tbody").append(newRow);
+
+})
+
 // On click handler for form submit.
 $("#submit").on("click", function (e) {
 
@@ -32,22 +54,5 @@ $("#submit").on("click", function (e) {
         startDate: startDate,
         monthlyRate: monthlyRate
     });
-
-    // Create new row.
-    var newRow = $("<tr>");
-
-    // Create new TDs with appropriate values.
-    var nameTD = $("<td>").text(name);
-    var roleTD = $("<td>").text(role);
-    var startTD = $("<td>").text(startDate);
-    var monthsWorkedTD = $("<td>").text("Placeholder");
-    var monthlyRateTD = $("<td>").text(monthlyRate);
-    var totalBilledTD = $("<td>").text("Placeholder");
-
-    // Append td values to row.
-    newRow.append(nameTD, roleTD, startTD, monthsWorkedTD, monthlyRateTD, totalBilledTD);
-
-    // Append new row to existing table "tbody".
-    $("tbody").append(newRow);
 
 });
