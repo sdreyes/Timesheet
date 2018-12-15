@@ -23,8 +23,16 @@ database.ref().on("child_added", function(snapshot) {
     // Create new row.
     var newRow = $("<tr>");
 
+    //This works, but we'll probably learn a better way in a second.
+    // var diff = moment(sv.startDate, "MM/DD/YYYY").diff(moment(), 'milliseconds');
+    // console.log(diff);
+    // var duration = moment.duration(diff);
+    // console.log(duration);
+    // totalMonths = Math.abs(duration.asMonths().toFixed(0));
+    
+
     // Calculate total billed, truncate to 2 decimals
-    totalBilled = totalMonths * monthlyRate;
+    totalBilled = totalMonths * sv.monthlyRate;
     totalBilled = totalBilled.toFixed(2);
 
     // Create new TDs with appropriate values.
@@ -32,6 +40,7 @@ database.ref().on("child_added", function(snapshot) {
     var roleTD = $("<td>").text(sv.role);
     var startTD = $("<td>").text(sv.startDate);
     var monthsWorkedTD = $("<td>").text("Placeholder");
+   // var monthsWorkedTD = $("<td>").text(totalMonths);
     var monthlyRateTD = $("<td>").text(sv.monthlyRate);
     var totalBilledTD = $("<td>").text(totalBilled);
     
