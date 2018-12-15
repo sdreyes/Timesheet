@@ -63,6 +63,12 @@ $("#submit").on("click", function (e) {
     startDate = $("#employee-start").val().trim();
     monthlyRate = parseInt($("#employee-rate").val());
     
+    console.log(startDate);
+    var str = startDate;
+    var res = str.split("-");
+    console.log(res);
+    startDate = res[1]+"/"+res[2]+"/"+res[0];
+
     database.ref().push({
         name: name,
         role: role,
