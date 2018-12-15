@@ -31,11 +31,11 @@ database.ref().on("child_added", function(snapshot) {
     var newRow = $("<tr>");
 
     //This works, but we'll probably learn a better way in a second.
-    var diff = moment(sv.startDate, "MM/DD/YYYY").diff(moment(), 'milliseconds');
-    console.log(diff);
-    var duration = moment.duration(diff);
-    console.log(duration);
-    totalMonths = Math.abs(duration.asMonths().toFixed(0));
+    // var diff = moment(sv.startDate, "MM/DD/YYYY").diff(moment(), 'milliseconds');
+    // console.log(diff);
+    // var duration = moment.duration(diff);
+    // console.log(duration);
+    totalMonths = moment().diff(sv.startDate, "months");
     
 
     // Calculate total billed, truncate to 2 decimals
