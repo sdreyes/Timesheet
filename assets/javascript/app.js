@@ -17,6 +17,13 @@ var monthlyRate = 0;
 var totalMonths = 0;
 var totalBilled = 0;
 
+// Currency formatter (courtesy of https://flaviocopes.com/how-to-format-number-as-currency-javascript/)
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+  });
+
 database.ref().on("child_added", function(snapshot) {
     var sv = snapshot.val();
 
@@ -24,11 +31,11 @@ database.ref().on("child_added", function(snapshot) {
     var newRow = $("<tr>");
 
     //This works, but we'll probably learn a better way in a second.
-    // var diff = moment(sv.startDate, "MM/DD/YYYY").diff(moment(), 'milliseconds');
-    // console.log(diff);
-    // var duration = moment.duration(diff);
-    // console.log(duration);
-    // totalMonths = Math.abs(duration.asMonths().toFixed(0));
+    var diff = moment(sv.startDate, "MM/DD/YYYY").diff(moment(), 'milliseconds');
+    console.log(diff);
+    var duration = moment.duration(diff);
+    console.log(duration);
+    totalMonths = Math.abs(duration.asMonths().toFixed(0));
     
 
     // Calculate total billed, truncate to 2 decimals
@@ -40,9 +47,9 @@ database.ref().on("child_added", function(snapshot) {
     var roleTD = $("<td>").text(sv.role);
     var startTD = $("<td>").text(sv.startDate);
     var monthsWorkedTD = $("<td>").text("Placeholder");
-   // var monthsWorkedTD = $("<td>").text(totalMonths);
-    var monthlyRateTD = $("<td>").text(sv.monthlyRate);
-    var totalBilledTD = $("<td>").text(totalBilled);
+    var monthsWorkedTD = $("<td>").text(totalMonths);
+    var monthlyRateTD = $("<td>").text(formatter.format(sv.monthlyRate));
+    var totalBilledTD = $("<td>").text(formatter.format(totalBilled));
     
     // Append td values to row.
     newRow.append(nameTD, roleTD, startTD, monthsWorkedTD, monthlyRateTD, totalBilledTD);
