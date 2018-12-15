@@ -68,7 +68,7 @@ $("#submit").on("click", function (e) {
     name = $("#employee-name").val().trim();
     role = $("#employee-role").val().trim();
     startDate = $("#employee-start").val().trim();
-    monthlyRate = parseInt($("#employee-rate").val());
+    monthlyRate = parseFloat($("#employee-rate").val()).toFixed(2);
     
     console.log(startDate);
     var str = startDate;
