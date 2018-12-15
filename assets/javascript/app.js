@@ -1,10 +1,22 @@
+var config = {
+    apiKey: "AIzaSyDrTW0itwSy0cBSC-cFUpStAHk18Wu1aAM",
+    authDomain: "timesheet-7f36f.firebaseapp.com",
+    databaseURL: "https://timesheet-7f36f.firebaseio.com",
+    projectId: "timesheet-7f36f",
+    storageBucket: "",
+    messagingSenderId: "529687938701"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
 var name = "";
 var role = "";
 var startDate = "";
 var monthlyRate = 0;
 
 // On click handler for form submit.
-$("#submit").on("click", function(e) {
+$("#submit").on("click", function (e) {
 
     e.preventDefault();
 
@@ -13,7 +25,14 @@ $("#submit").on("click", function(e) {
     role = $("#employee-role").val().trim();
     startDate = $("#employee-start").val().trim();
     monthlyRate = parseInt($("#employee-rate").val());
-    
+
+    database.ref().push({
+        name: name,
+        role: role,
+        startDate: startDate,
+        monthlyRate: monthlyRate
+    });
+
     // Create new row.
     var newRow = $("<tr>");
 
@@ -26,7 +45,7 @@ $("#submit").on("click", function(e) {
     var totalBilledTD = $("<td>").text("Placeholder");
 
     // Append td values to row.
-    newRow.append(nameTD, roleTD, startTD, monthsWorkedTD, monthlyRateTD, totalBilledTD); 
+    newRow.append(nameTD, roleTD, startTD, monthsWorkedTD, monthlyRateTD, totalBilledTD);
 
     // Append new row to existing table "tbody".
     $("tbody").append(newRow);
