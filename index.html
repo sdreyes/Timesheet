@@ -3,12 +3,55 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Timesheet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <script src="assets/javascript/app.js"></script>
 </head>
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron">
+                    <h1>Employee Data Management</h1>
+                    <h4>A compreensive directory of employee billable hours</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-secondary">
+                        Current Employees
+                    </li>
+                    <li class="list-group-item">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Employee Name</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Start Date</th>
+                                    <th scope="col">Months Worked</th>
+                                    <th scope="col">Monthly Rate ($)</th>
+                                    <th scope="col">Total Billed ($)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Smith</td>
+                                    <td>Employee</td>
+                                    <td>12/03/2017</td>
+                                    <td></td>
+                                    <td>3000</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>
