@@ -1,4 +1,7 @@
-
+var name = "";
+var role = "";
+var startDate = "";
+var monthlyRate = 0;
 
 // On click handler for form submit.
 $("#submit").on("click", function(e) {
@@ -6,10 +9,10 @@ $("#submit").on("click", function(e) {
     e.preventDefault();
 
     // Grab values from submit button.
-    var name = $("#employee-name").val().trim();
-    var role = $("#employee-role").val().trim();
-    var startDate = $("#employee-start").val().trim();
-    var monthlyRate = parseInt($("#employee-rate").val());
+    name = $("#employee-name").val().trim();
+    role = $("#employee-role").val().trim();
+    startDate = $("#employee-start").val().trim();
+    monthlyRate = parseInt($("#employee-rate").val());
     
     // Create new row.
     var newRow = $("<tr>");
